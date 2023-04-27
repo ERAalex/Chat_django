@@ -3,9 +3,9 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale="1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Chat - Django</title>
+        <title>{% block title %} {% endblock %} Chat - Django</title>
 
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
@@ -22,10 +22,8 @@
             </div>
         </nav>
 
-        <div class="p-10 lg:p-20 text-center">
-            <h1 class="text-3xl lg:text-6xl text-white">Django Chat</h1>
-
-        </div>
+        {% block content %}
+        {% endblock %}
 
     </body>
 
