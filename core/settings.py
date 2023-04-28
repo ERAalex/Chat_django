@@ -18,6 +18,10 @@ DEBUG = env('DEBUG_STATUS')
 
 ALLOWED_HOSTS = []
 
+LOGOUT_REDIRECT_URL = '/signup/'
+LOGIN_REDIRECT_URL = '/rooms/'
+LOGIN_URL = '/login/'
+
 
 # Application definition
 
@@ -31,6 +35,7 @@ INSTALLED_APPS = [
 
     'channels',
     'chatapp',
+    'room',
 ]
 
 MIDDLEWARE = [
