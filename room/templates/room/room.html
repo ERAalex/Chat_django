@@ -37,5 +37,39 @@
                     id="chat-message-submit">Submit</button>
             </form>
         </div>
+{% endblock %}
+
+{% block scripts %}
+{{ room.slug|json_script:"json-roomname" }}
+{{ request.user.username|json_script:"json-roomname" }}
+
+<script>
+    const roomName = JSON.parse(document.getElementById('json-roomname').textContent);
+    const userName = JSON.parse(document.getElementById('json-username').textContent);
+
+    const chatSocket = new WebSocket(
+        'ws://'
+        + window.location.host
+        + '/ws/'
+        + roomName
+        + '/'
+    );
+
+    chatSocket.onopen = function(e) {
+      chatSocket.send(JSON.stringify({
+        message: 'Hello from Js client'
+      }));
+    };
+
+    chatSocket.onmessage = function(e) {
+            console.log('onmessage')
+        }
+
+    chatSocket.onclose = function(e) {
+        console.log('onclose2')
+       }
+
+
+</script>
 
 {% endblock %}
